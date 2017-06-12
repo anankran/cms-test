@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /controller/
+Disallow: /model/
+Disallow: /config/
+Disallow: /view/
