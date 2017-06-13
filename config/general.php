@@ -8,8 +8,8 @@ ini_set('display_startup_errors',1);
 error_reporting(E_ALL);
 
 define('ROOT_PATH','/var/html/');
-define('FULL_URL','http://youdomain.com/');
-define('ASSETS_URL','http://youdomain.com/public/assets/');
+define('FULL_URL','http://127.0.0.1/kiss-mvc/');
+define('ASSETS_URL','http://127.0.0.1/kiss-mvc/public/assets/');
 
 // For NGINX
 if (!function_exists('getallheaders')):

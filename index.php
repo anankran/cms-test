@@ -13,6 +13,7 @@ if(isset($url[0]) && $url[0] != 'ajax'):
 endif;
 
 require_once 'config/general.php';
+require_once 'config/session.php';
 require_once 'vendor/autoload.php';
 
 if(isset($url[0]) && $url[0] == 'ajax'):
