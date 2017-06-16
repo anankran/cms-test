@@ -7,22 +7,24 @@
 
 namespace Controller;
 
-use Model\Main;
+use Model\Posts;
 use Mustache_Engine;
 use Mustache_Loader_FilesystemLoader;
 
 class PageController {
 
-	/**
-   	* Return view function and view file
-   	* @param $page string View name
-   	* @param $id integer Unique ID
-  	*/
-	function __construct($page,$id = null)
+	function __construct($page, $id = null)
 	{
+
 		$m = new Mustache_Engine(array(
 		    'loader' => new Mustache_Loader_FilesystemLoader('view'),
+				'helpers' => array(
+					'_token' => $_SESSION['_token'],
+					'fullpath' => FULL_URL,
+					'assetspath' => ASSETS_URL
+				)
 		));
+
 		if(file_exists('view/'.$page.'.mustache')):
 			if(method_exists(__CLASS__,$page)):
 				$records = $this->$page($id);
@@ -33,18 +35,28 @@ class PageController {
 		else:
 			print $m->render( '404' );
 		endif;
+
 	}
 
-	/**
-   	* Return values to view
-   	* @uses Main
-   	* @access private
-   	* @return array
-  	*/
 	private function main()
 	{
-		$return = Main::all();
-		return [ 'results' => $return ];
+		$records = Posts::all();
+		return $records;
+	}
+
+	private function post($id)
+	{
+		$records = Posts::getPost($id);
+		return isset($records[0]) ? $records[0] : '' ;
+	}
+
+	private function view($id)
+	{
+		$record = Posts::getPost($id);
+		$records = [];
+		$records['title'] = $record[0]['title'];
+		$records['text'] = nl2br($record[0]['text']);
+		return $records;
 	}
 
 }

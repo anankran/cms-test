@@ -1,0 +1,25 @@
+{{> header }}
+{{> menu}}
+
+<h2>Posts</h2>
+<a class="button" href="{{fullpath}}post">Novo post</a>
+<table class="hover">
+  <thead>
+    <tr>
+      <th>Post</th>
+      <th>Path</th>
+      <th width="150">#</th>
+    </tr>
+  </thead>
+  <tbody>
+  {{#records}}
+    <tr>
+      <td><a href="{{fullpath}}view/{{id}}">{{title}}</a></td>
+      <td><a href="{{fullpath}}view/{{id}}">view/{{id}}</a></td>
+      <td><a href="{{fullpath}}post/{{id}}">Editar</a></td>
+    </tr>
+  {{/records}}
+  </tbody>
+</ul>
+
+{{> footter }}

@@ -7,9 +7,8 @@ ini_set('display_errors',1);
 ini_set('display_startup_errors',1);
 error_reporting(E_ALL);
 
-define('ROOT_PATH','/var/html/');
-define('FULL_URL','http://127.0.0.1/kiss-mvc/');
-define('ASSETS_URL','http://127.0.0.1/kiss-mvc/public/assets/');
+define('FULL_URL','https://cms-mvc.herokuapp.com/');
+define('ASSETS_URL','https://cms-mvc.herokuapp.com/public/assets/');
 
 // For NGINX
 if (!function_exists('getallheaders')):

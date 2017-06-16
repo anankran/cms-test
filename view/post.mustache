@@ -1,9 +1,29 @@
 {{> header }}
+{{> menu}}
 
-<form>
-  <input type="text" placeholder="Título">
-  <textarea name="name" placeholder="Texto"></textarea>
-  <button>Enviar</button>
+<h2>Edit post</h2>
+<form id="post">
+  <input type="text" placeholder="Título" id="title" value="{{records.title}}" required="required" autofocus="autofocus">
+  <textarea id="text" placeholder="Texto" rows="10" required="required">{{{records.text}}}</textarea>
+  <input type="hidden" id="id" value="{{records.id}}">
+  <button class="button" id="enviar">Enviar</button>
 </form>
+
+<script>
+$(document).ready(function(){
+  CKEDITOR.replace('text');
+  $('form').submit(function(e){
+    e.preventDefault();
+    var title = $('#title').val();
+    var text = CKEDITOR.instances.text.getData();
+    var id = $('#id').val();
+    if(id == ''){
+      insert(title, text);
+    } else {
+      update(id, title, text);
+    }
+  });
+});
+</script>
 
 {{> footter }}
