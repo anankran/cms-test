@@ -2,7 +2,6 @@
 use Controller\SessionController as SessionController;
 
 $session = new SessionController();
-$message = '';
 
 if(isset($url[0]) && $url[0] == 'logout'):
   unset($_SESSION['loggedIn']);
