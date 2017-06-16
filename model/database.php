@@ -58,10 +58,10 @@ class Database {
 
 	protected static function conn()
 	{
-		$host = 'justd.mysql.uhserver.com';
-		$db = 'justd';
-		$username = 'nankran';
-		$password = 'xs3e1zt0xexj{';
+		$host = 'mysql.com.br';
+		$db = 'dbname';
+		$username = 'username';
+		$password = '************';
 		$pdo = new PDO('mysql:host='.$host.';dbname='.$db.';charset=utf8', $username, $password);
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		return $pdo;
